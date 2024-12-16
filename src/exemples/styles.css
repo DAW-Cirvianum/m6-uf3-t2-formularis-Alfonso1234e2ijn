@@ -25,3 +25,8 @@ input[type='range'] {
   width: 6em;
   margin: 0.3em 0;
 }
+
+/* Selector :invalid */
+input:invalid {
+  border: 1px solid red;
+}

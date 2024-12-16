@@ -1,100 +1,61 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exemples de Formulari</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <h1>Exemples</h1>
-    <h2>Diferents tipus de inputs: email, date, color, range i datalist.</h2>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulari i Consulta Meteorològica</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="formularis.js" defer></script>
+</head>
+<body>
+  <h1>Exemples de Formularis</h1>
 
-    <form>
-      <fieldset>
-        <legend>
-          Diferents tipus de inputs: email, date, color, range i datalist.
-        </legend>
-        <label for="mail">E-mail</label>
-        <input type="email" id="mail" name="mail" list="correus" /><br />
-        <datalist id="correus">
-          <option value="bcollie@cirvianum.cat"></option>
-          <option value="pros@prova.cat"></option>
-        </datalist>
+  <!-- Formulari de registre -->
+  <form id="registreForm">
+    <fieldset>
+      <legend>Registre d'usuari</legend>
+      
+      <label for="nif">NIF</label>
+      <input type="text" id="nif" name="nif" placeholder="NIF" required /><br />
+      
+      <label for="email">Correu Electrònic</label>
+      <input type="email" id="email" name="email" placeholder="Email" required /><br />
+      
+      <label for="password">Contrasenya</label>
+      <input type="password" id="password" name="password" placeholder="Contrasenya" required /><br />
+      
+      <label for="birthdate">Data de Naixement</label>
+      <input type="date" id="birthdate" name="birthdate" required /><br />
+      
+      <input type="checkbox" id="terms" name="terms" />
+      <label for="terms">Accepto els Termes i Condicions</label><br />
+      
+      <button type="submit">Registrar</button>
+    </fieldset>
+  </form>
 
-        <label for="data">Data</label>
-        <input type="date" id="data" name="data" /><br />
+  <!-- Formulari de consulta meteorològica -->
+  <form id="meteoForm">
+    <fieldset>
+      <legend>Consulta Meteorològica</legend>
+      
+      <label for="city">Ciutat</label>
+      <input type="text" id="city" name="city" placeholder="Ciutat" required /><br />
+      
+      <label for="postalCode">Codi Postal</label>
+      <input type="text" id="postalCode" name="postalCode" placeholder="Codi Postal" /><br />
+      
+      <label for="country">País</label>
+      <input type="text" id="country" name="country" placeholder="País" required /><br />
+      
+      <button type="submit">Consulta el Temps</button>
+    </fieldset>
+  </form>
 
-        <label for="color">Color</label>
-        <input type="color" id="color" name="color" value="#000000" /><br />
-
-        <label for="valor">Valor</label>
-        <input
-          type="range"
-          id="valor"
-          name="valor"
-          value="7"
-          min="0"
-          max="9"
-        /><br />
-      </fieldset>
-
-      <fieldset>
-        <legend>Més tipus de inputs: checkbox, radio i textarea.</legend>
-        <input type="checkbox" id="opinar" name="opinar" />
-        <label for="opinar">Vull opinar</label><br />
-        <textarea id="opinio" name="opinio" rows="5" maxlength="250"></textarea
-        ><br /><br />
-        <input
-          type="radio"
-          id="noTransport"
-          name="transport"
-          value="notransport"
-          checked
-        />
-        <label for="noTransport">No tinc mitjà de transport</label><br />
-        <input type="radio" id="patinet" name="transport" value="patinet" />
-        <label for="patinet">Tinc patinet</label><br />
-        <input type="radio" id="cotxeMoto" name="transport" value="cotxemoto" />
-        <label for="cotxeMoto">Tinc cotxe o moto</label>
-      </fieldset>
-
-      <fieldset>
-        <legend>Matrícula</legend>
-        <label for="curs" style="width: auto">Curs</label>
-        <select id="curs" name="curs">
-          <option value="">Selecciona un curs</option>
-          <optgroup label="SMX">
-            <option value="SMX1" selected>1r SMX</option>
-            <option value="SMX2">2n SMX</option>
-          </optgroup>
-          <optgroup label="ASIX">
-            <option value="ASIX1">1r ASIX</option>
-            <option value="ASIX2">2n ASIX</option>
-          </optgroup>
-          <optgroup label="DAW">
-            <option value="DAW1">1r DAW</option>
-            <option value="DAW2">2n DAW</option>
-          </optgroup>
-        </select>
-        <details>
-          <summary>Mòduls</summary>
-          <p>
-            M01-Hardware<br />
-            M02-Sistemes<br />
-            M03-Ofimàtica<br />
-            M05-Xarxes<br />
-          </p>
-        </details>
-      </fieldset>
-    </form>
-    <script>
-      const mail = document.getElementById('mail');
-      console.log(mail);
-      mail.addEventListener('click', function () {
-        console.log('hola');
-      });
-    </script>
-  </body>
+  <section id="weatherResults" style="display: none;">
+    <h2>Resultats Meteorològics</h2>
+    <p id="currentWeather"></p>
+    <p id="forecastWeather"></p>
+  </section>
+</body>
 </html>
